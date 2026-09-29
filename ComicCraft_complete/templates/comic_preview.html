@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Comic Preview - ComicCraft{% endblock %}
+
+{% block content %}
+<section class="container preview">
+    <div class="preview-header">
+        <div>
+            <div class="badge">COMIC GENERATED</div>
+            <h1>Your Comic</h1>
+            <p><strong>Idea:</strong> {{ comic.request.story_prompt }}</p>
+        </div>
+
+        <div class="actions">
+            <button type="button" onclick="downloadComic('{{ comic.comic_id }}')">
+                Export PDF
+            </button>
+            <a class="button secondary" href="/">Create Another</a>
+        </div>
+    </div>
+
+    <div class="panel-grid">
+        {% for panel in comic.panels %}
+        <article class="panel">
+            <div class="panel-number">PANEL {{ panel.panel_number }}</div>
+            <h2>{{ panel.title }}</h2>
+
+            <img
+                src="{{ panel.image_url }}"
+                alt="Comic panel {{ panel.panel_number }}: {{ panel.title }}"
+                loading="lazy"
+            >
+
+            <div class="panel-copy">
+                <p><strong>Scene</strong>{{ panel.scene_description }}</p>
+                <p><strong>Caption</strong>{{ panel.caption }}</p>
+                <p><strong>Narration</strong>{{ panel.narration }}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

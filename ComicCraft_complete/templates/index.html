@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Create Comic - ComicCraft{% endblock %}
+
+{% block content %}
+<section class="hero container">
+    <div class="badge">GENERATIVE AI PROJECT</div>
+    <h1>Create Your AI Comic</h1>
+    <p>Turn one story idea into a five-panel illustrated comic and export it as a PDF.</p>
+</section>
+
+<section class="container card">
+    {% if error %}
+    <div class="error" role="alert">
+        <strong>Generation failed:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <form action="/generate" method="post" id="comicForm">
+        <label for="story_prompt">Story idea</label>
+        <textarea
+            id="story_prompt"
+            name="story_prompt"
+            required
+            minlength="5"
+            maxlength="2000"
+            placeholder="A young inventor discovers a mysterious machine that can freeze time..."
+        ></textarea>
+
+        <label for="character_name">Character name</label>
+        <input
+            id="character_name"
+            name="character_name"
+            required
+            maxlength="100"
+            placeholder="Alex"
+        >
+
+        <label for="setting">Setting</label>
+        <select id="setting" name="setting">
+            <option>Futuristic city</option>
+            <option>Fantasy kingdom</option>
+            <option>Space station</option>
+            <option>Ancient village</option>
+            <option>School campus</option>
+        </select>
+
+        <label for="tone">Tone</label>
+        <select id="tone" name="tone">
+            <option>Adventure</option>
+            <option>Comedy</option>
+            <option>Mystery</option>
+            <option>Heartwarming</option>
+            <option>Science fiction</option>
+        </select>
+
+        <label for="art_style">Art style</label>
+        <select id="art_style" name="art_style">
+            <option>Modern comic book</option>
+            <option>Anime-inspired</option>
+            <option>Cartoon</option>
+            <option>Watercolor</option>
+            <option>Graphic novel</option>
+        </select>
+
+        <button type="submit" id="createButton">Create My Comic</button>
+    </form>
+</section>
+
+<section class="container workflow">
+    <div><span>1</span> Story</div>
+    <div><span>2</span> Script</div>
+    <div><span>3</span> Images</div>
+    <div><span>4</span> Preview</div>
+    <div><span>5</span> PDF</div>
+</section>
+{% endblock %}

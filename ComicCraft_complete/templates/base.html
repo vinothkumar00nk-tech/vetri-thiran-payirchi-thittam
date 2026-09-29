@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ComicCraft AI comic generator">
+    <title>{% block title %}ComicCraft{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="/" class="logo">ComicCraft</a>
+        <span class="tagline">AI Comic Generator</span>
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="container">ComicCraft • AI-powered comic creation</div>
+</footer>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
